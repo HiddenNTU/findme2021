@@ -3,10 +3,32 @@
 
 <head>
 	<title></title>
+	<link rel="stylesheet" href="styles.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 </head>
 
 <body>
-	<h1 id="show"></h1>
+	<div class="grid-container">
+		<div class="grid-item"><img src="1.png" width="200" height="200" style="visibility: hidden;" id="1"></div>
+		<div class="grid-item"><img src="2.png" width="200" height="200" style="visibility: hidden;" id="2"></div>
+		<div class="grid-item"></div>
+		<div class="grid-item"><img src="5.png" width="200" height="200" style="visibility: hidden;" id="5"></div>
+		<div class="grid-item"><img src="6.png" width="200" height="200" style="visibility: hidden;" id="6"></div>
+		<div class="grid-item"><img src="3.png" width="200" height="200" style="visibility: hidden;" id="3"></div>
+		<div class="grid-item"><img src="4.png" width="200" height="200" style="visibility: hidden;" id="4"></div>		
+		<div class="grid-item"></div>
+		<div class="grid-item"><img src="7.png" width="200" height="200" style="visibility: hidden;" id="7"></div>
+		<div class="grid-item"><img src="8.png" width="200" height="200" style="visibility: hidden;" id="8"></div>	
+	</div>
+	
+	
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script>
+		firebase.initializeApp({
+		  databaseURL: "https://findme2021-269dc-default-rtdb.firebaseio.com/"
+		});
+		const database = firebase.database();
+	</script>
 	<script>
 		function getParameterByName(name, url) {
 			if (!url) url = window.location.href;
@@ -19,8 +41,17 @@
 		}
 		var name = getParameterByName('name');
 		console.log(name);
-		document.getElementById("show").innerHTML = name;
+		database.ref('/').once('value',e=>{
+			data = e.val();
+			for (var i = 0; i <= 3; i++){
+				if (data[name]['p' + (i+1).toString()]['correct'] == 1){
+					document.getElementById((i+1).toString()).style.visibility = "visible";
+					document.getElementById((i+5).toString()).style.visibility = "visible";
+				}
+			}
+		});
 	</script>
+
 </body>
 
 </html>

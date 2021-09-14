@@ -8,7 +8,7 @@
 		  type="image/png" 
 		  href="ICON.png">
 -->		  
-	<link rel="stylesheet" href="p1styles.css">
+	<link rel="stylesheet" href="p3styles.css">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
 
@@ -20,7 +20,7 @@
 	</header>
 
 	<section>
-		<div style="height:100px;padding:50px;font-size:180%;"> P1 </div>
+		<div style="height:100px;padding:50px;font-size:180%;"> P3 </div>
 		<div style="height:70px;padding:20px;"><span style="font-size:200%;margin-right:40px"> 名字 </span><input type="text" id="namebar" placeholder="Name"></div>
 		<div style="height:90px;padding:20px;"><span style="font-size:200%;margin-right:40px"> 答案 </span><input type="text" id="ansbar" placeholder="Answer"></div>
 		<span style="margin-right:20px"></span>
@@ -42,8 +42,8 @@
 			document.getElementById("ansbar").value = "";
 			document.getElementById("showbar1").innerHTML = "";
 			document.getElementById("showbar2").innerHTML = "";
-			if (ans.includes('P1')){
-				Correct(1);
+			if (ans.includes('P3')){
+				Correct(3);
 				document.getElementById('showbar1').innerHTML = "Correct!";
 				document.getElementById("directbutton").classList.remove('drtbtn');
 				document.getElementById("directbutton").classList.add('drtbtn2');
@@ -88,7 +88,7 @@
 	
 	<script>
 		function direct(){
-			window.location.href = "http://www.w3schools.com";
+			window.location.href = "../collection/collection.html?name=" + name;
 		}
 	</script>
 <!-- template end -->
