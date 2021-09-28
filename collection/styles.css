@@ -24,3 +24,26 @@ body {
   font-size: 0px;
   text-align: center;
 }
+
+.drtbtn{
+	font-size:200%;
+	padding:5px 15px; 
+	background:#ccc; 
+	border: 2px solid #ccc;
+	cursor:pointer;
+	border-radius: 10px; 
+	transition-duration: 0.2s;
+	display: none;
+}
+.drtbtn:hover {background-color: White;}
+
+.drtbtn2{
+	font-size:200%;
+	padding:5px 15px; 
+	background:#ccc; 
+	border: 2px solid #ccc;
+	cursor:pointer;
+	border-radius: 10px; 
+	transition-duration: 0.2s;
+}
+.drtbtn2:hover {background-color: White;}

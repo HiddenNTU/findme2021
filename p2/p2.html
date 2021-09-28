@@ -20,7 +20,7 @@
 	</header>
 
 	<section>
-		<div style="height:60px;padding:30px;font-size:180%;"> P2 </div>
+		<div style="height:60px;padding:30px;font-size:180%;"> 15*12, ((11)+13), ((2)+9)*2, (10)*(14+((16))+6) --> ???? </div>
 		<div style="height:70px;padding:20px;"><span style="font-size:200%;margin-right:40px"> 名字 </span><input type="text" id="namebar" placeholder="Name"></div>
 		<div style="height:90px;padding:20px;"><span style="font-size:200%;margin-right:40px"> 答案 </span><input type="text" id="ansbar" placeholder="Answer"></div>
 		<span style="margin-right:20px"></span>
@@ -35,14 +35,14 @@
 	<script>
 		function submit() { 
 			name = document.getElementById("namebar").value;
-			if (name == ''){
+			if (name == '' || name.includes('.') || name.includes('\\') || name.includes('/')){
 				return ;
 			}
 			var ans = document.getElementById("ansbar").value;
 			document.getElementById("ansbar").value = "";
 			document.getElementById("showbar1").innerHTML = "";
 			document.getElementById("showbar2").innerHTML = "";
-			if (ans.includes('P2')){
+			if (ans.toUpperCase().includes('CAKE')){
 				Correct(2);
 				document.getElementById('showbar1').innerHTML = "Correct!";
 				document.getElementById("directbutton").classList.remove('drtbtn');

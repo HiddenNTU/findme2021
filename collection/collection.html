@@ -24,7 +24,8 @@
 		<div class="grid-item"><img src="8.jpg" width="200" height="200" style="visibility: hidden;" id="8"></div>	
 		<div class="grid-item"></div>
 	</div>
-	
+	<div id="showbar" style="height:90px;padding:15px;"></div>
+	<button id="directbutton" onclick="direct()" class="drtbtn"> Draw Battle! </button>
 	
 	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
 	<script>
@@ -45,6 +46,7 @@
 		}
 		var name = getParameterByName('name');
 		console.log(name);
+		var all_done = true;
 		database.ref('/').once('value',e=>{
 			data = e.val();
 			for (var i = 0; i <= 3; i++){
@@ -52,10 +54,23 @@
 					document.getElementById((i+1).toString()).style.visibility = "visible";
 					document.getElementById((i+5).toString()).style.visibility = "visible";
 				}
+				else{
+					all_done = false;
+				}
+			}
+			if (all_done){
+				document.getElementById("showbar").innerHTML = "恭喜你解完所有迷題！<br>你可以繼續留在Gather Town，或是來跟我們玩Draw Battle。<br>請記得在8:20回到Google Meet聊天室。";
+				document.getElementById("directbutton").classList.remove('drtbtn');
+				document.getElementById("directbutton").classList.add('drtbtn2');
 			}
 		});
+		
 	</script>
-
+	<script>
+		function direct(){
+			window.location.href = "https://drawbattle.io/CBYK";
+		}
+	</script>
 </body>
 
 </html>
