@@ -6,7 +6,46 @@
 </head>
 
 <body>
-
+	<div id="t1">解出1題的人：</div>
+	<div id="t2">解出2題的人：</div>
+	<div id="t3">解出3題的人：</div>
+	<div id="t4">解出4題的人：</div>
+	<div id="p1">解出第一題的人：</div>
+	<div id="p2">解出第二題的人：</div>
+	<div id="p3">解出第三題的人：</div>
+	<div id="p4">解出第四題的人：</div>
+	<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+	<script>
+		firebase.initializeApp({
+		  databaseURL: "https://findme2021-269dc-default-rtdb.firebaseio.com/"
+		});
+		const database = firebase.database();
+	</script>
+	<script>
+		database.ref('/').once('value',e=>{
+			data = e.val();
+			var t = [0, 0, 0, 0];
+			var p = [0, 0, 0, 0];
+			for (var person in data) {
+				if (person == 'nonempty'){
+					continue;
+				}
+				var count = 0;
+				for (var i = 1; i <= 4; i++){
+					var pn = 'p' + i.toString();
+					if (data[person][pn]['correct'] == 1){
+						count += 1;
+						p[i-1] += 1;
+					}
+				}
+				t[count-1] += 1;
+			}
+			for (var i = 1; i <= 4; i++){
+				document.getElementById('t' + i.toString()).innerHTML += t[i-1].toString();
+				document.getElementById('p' + i.toString()).innerHTML += p[i-1].toString();
+			}
+		});
+	</script>
 </body>
 
 </html>
